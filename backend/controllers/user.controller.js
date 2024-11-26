@@ -44,7 +44,6 @@ export const updateProfile= async(req, res)=>{
     try {
         const allowedFields=[
             "name",
-            "username",
             "headline",
             "about",
             "location",
