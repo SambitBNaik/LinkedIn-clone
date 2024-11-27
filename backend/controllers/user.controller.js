@@ -63,7 +63,7 @@ export const updateProfile= async(req, res)=>{
         }
 
         if(req.body.profilePicture){
-            const result = await cloudinary.uploaer.upload(req.body.profilePicture);
+            const result = await cloudinary.uploader.upload(req.body.profilePicture);
             updateData.profilePicture=result.secure_url;
         }
 

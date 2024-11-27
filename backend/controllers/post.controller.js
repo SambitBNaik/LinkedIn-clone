@@ -77,21 +77,20 @@ export const deletePost = async( req, res)=>{
     }
 }
 
+export const getPostById = async (req, res) => {
+	try {
+		const postId = req.params.id;
+        console.log("post id", postId);
+		const post = await Post.findById(postId)
+			.populate("author", "name username profilePicture headline")
+			.populate("comments.user", "name profilePicture username headline");
 
-export const getPostById = async(req, res)=>{
-    try {
-        const postId= req.params.id;
-        const post = Post.findById(postId)
-        .populate("author","name username profilePicture headline")
-        .populate("comments.user","name profilePicture username headline");
-
-        res.status(200).json(post);
-    } catch (error) {
-        console.error("Error in getPostById controller", error);
-        res.status(500).json({ message: "Server error"});
-    }
-}
-
+		res.status(200).json(post);
+	} catch (error) {
+		console.error("Error in getPostById controller:", error);
+		res.status(500).json({ message: "Server error" });
+	}
+};
 export const  createComment= async(req, res)=>{
     try {
         const postId= req.params.id;

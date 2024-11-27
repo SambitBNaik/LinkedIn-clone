@@ -43,7 +43,7 @@ export const sendCommentNotificationEmail= async(
 }
 
 
-export const sendConnectionAcceptedEmail= async(sendEmail, senderName, recipientName, profileUrl)=>{
+export const sendConnectionAcceptedEmail= async(senderEmail, senderName, recipientName, profileUrl)=>{
     const recipient=[{email: senderEmail}];
 
     try {
